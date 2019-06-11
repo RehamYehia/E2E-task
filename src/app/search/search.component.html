@@ -38,6 +38,7 @@
                     <div class="form-group" *ngIf="response">
                       
                       <select class="form-control " id="exampleFormControlSelect1"  (change)="onSelectCity($event.target.value)">
+                        <option></option>
                         <option *ngFor="let itm of response.hotels"> {{itm.city}} </option>
                       </select>
 
@@ -264,7 +265,7 @@
 
 
     </div>
-
+    
 
   </div>
 

@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
 
 
   response: DataModel;
-  hotels: Hotel[]=[];
+  hotels: Hotel[] = [];
   days: any;
   startDate: any;
   endDate: any;
@@ -67,6 +67,11 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
+
+    if (!this.selectedCity || !this.startDate || !this.endDate) {
+      alert("Enter Missing Values")
+    }
+    this.hotels=[];
     let array = this.response.hotels;
     let availArray: Available[];
 
@@ -93,6 +98,10 @@ export class SearchComponent implements OnInit {
       }
     });
 
+
+    if (this.hotels.length == 0) {
+      alert("No Result")
+    }
 
 
 
