@@ -1,0 +1,272 @@
+<section class="serch py-5">
+  <diV class="text text-center py-5 ">
+
+    <h1>You're new travel mate
+    </h1>
+
+    <h2> Book Hotels & Flights at The Best Price </h2>
+  </diV>
+  <div class="s-panal container p-2">
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-Hotels-tab" data-toggle="pill" href="#pills-Hotels" role="tab"
+          aria-controls="pills-Hotels" aria-selected="true">Hotels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-Flight-tab" data-toggle="pill" href="#pills-Flight" role="tab"
+          aria-controls="pills-Flight" aria-selected="false">Flight</a>
+      </li>
+
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-Hotels" role="tabpanel" aria-labelledby="pills-Hotels-tab">
+
+        <div class="serch-tab p-2 ">
+          <div class="row px-3">
+            <div class="col-md-4 col-sm-12">
+              <h3 class="px-2"> Going To</h3>
+              <form>
+                <div class="row">
+                  <div class="col-1 py-2">
+                    <i class="fas fa-map-marker-alt"></i>
+
+                  </div>
+
+                  <div class="col-11">
+
+                    <div class="form-group" *ngIf="response">
+                      
+                      <select class="form-control " id="exampleFormControlSelect1"  (change)="onSelectCity($event.target.value)">
+                        <option *ngFor="let itm of response.hotels"> {{itm.city}} </option>
+                      </select>
+
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <h3>Checkin</h3>
+                  <input type="date" name="date" id="dateinput" class="dateinput" [(ngModel)]="startDate">
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <h3>Checkout</h3>
+                  <input type="date" name="date" id="dateinput2" class="dateinput" (input)="onChange()"
+                    [(ngModel)]="endDate">
+
+                </div>
+                <div class="col-md-4 col-sm-12 pt-4">
+                  <div class="night-nu"> <i class="fas fa-moon px-2"></i> {{diffDays}}<span> nights</span> </div>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-9">
+              <h3>Travelers</h3>
+              <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  <i class="fas fa-bed"></i> number ( <span> {{Traveler}} </span>) traveller
+                </button>
+                <div class="dropdown-menu">
+                  <h5 class="dropdown-header">Room 1</h5>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-6 ">
+                        <h6>Adult <span>(+12)</span> </h6>
+                      </div>
+                      <div class="col-6 "> <input type="number" [(ngModel)]="nu1" (input)="onChange()"></div>
+                    </div>
+                  </div>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-6 ">
+                        <h6>Children <span>(2 y to 11 y)</span> </h6>
+                      </div>
+                      <div class="col-6 "> <input type="number" [(ngModel)]="nu2" (input)="onChange()"></div>
+                    </div>
+                  </div>
+
+                  <h5 class="dropdown-header">Room 2</h5>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-6 ">
+                        <h6>Adult <span>(+12)</span> </h6>
+                      </div>
+                      <div class="col-6 "> <input type="number" step="50" value="0" [(ngModel)]="nu3" (input)="onChange()"></div>
+                    </div>
+                  </div>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-6 ">
+                        <h6>Children <span>(2 y to 11 y)</span> </h6>
+                      </div>
+                      <div class="col-6 "> <input type="number" step="50" value="0" [(ngModel)]="nu4" (input)="onChange()"></div>
+                    </div>
+                  </div>
+                  <div class="text-center ">
+                    <button>Add Room </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-1 col-sm-12 search-bt">
+              <div class="text-center my-4 ">
+                <i class="fas fa-search fa-3x " (click)="onSearch()"></i>
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+      <div class="tab-pane fade" id="pills-Flight" role="tabpanel" aria-labelledby="pills-Flight-tab">...</div>
+
+    </div>
+  </div>
+
+
+</section>
+
+
+<section class="result py-5">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 search mx-2">
+      <div class="form-group has-search">
+
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <div class="drop-down">
+        <a class="btn btn-primary btn-lg btn-block text-left" data-toggle="collapse" href="#collapseExample"
+          role="button" aria-expanded="false" aria-controls="collapseExample">
+          Price<i class="fas fa-sort-down "></i>
+        </a>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <input type="range" class="custom-range" min="378 " max="11475 " id="customRange">
+            <h2>378 EUD <span> 1147 EUD</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="drop-down">
+        <a class="btn btn-primary btn-lg btn-block text-left" data-toggle="collapse" href="#collapseExample1"
+          role="button" aria-expanded="false" aria-controls="collapseExample1">
+          Start Rate<i class="fas fa-sort-down "></i>
+        </a>
+        <div class="collapse" id="collapseExample1">
+          <div class="card card-body">
+            <input type="range" class="custom-range" min="378 " max="11475 " id="customRange1">
+            <h2>378 EUD <span> 1147 EUD</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="drop-down">
+        <a class="btn btn-primary btn-lg btn-block text-left" data-toggle="collapse" href="#collapseExample2"
+          role="button" aria-expanded="false" aria-controls="collapseExample2">
+          Chine <i class="fas fa-sort-down "></i>
+        </a>
+        <div class="collapse" id="collapseExample2">
+          <div class="card card-body">
+            <input type="range" class="custom-range" min="378 " max="11475 " id="customRange2">
+            <h2>378 EUD <span> 1147 EUD</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="drop-down">
+        <a class="btn btn-primary btn-lg btn-block text-left" data-toggle="collapse" href="#collapseExample3"
+          role="button" aria-expanded="false" aria-controls="collapseExample3">
+          Hotel Aminitites<i class="fas fa-sort-down "></i>
+        </a>
+        <div class="collapse" id="collapseExample3">
+          <div class="card card-body">
+            <input type="range" class="custom-range" min="378 " max="11475 " id="customRange3">
+            <h2>378 EUD <span> 1147 EUD</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="drop-down">
+        <a class="btn btn-primary btn-lg btn-block text-left" data-toggle="collapse" href="#collapseExample4"
+          role="button" aria-expanded="false" aria-controls="collapseExample4">
+          Room Aminitites<i class="fas fa-sort-down "></i>
+        </a>
+        <div class="collapse" id="collapseExample4">
+          <div class="card card-body">
+            <input type="range" class="custom-range" min="378 " max="11475 " id="customRange4">
+            <h2>378 EUD <span> 1147 EUD</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12  p-2 " *ngIf="hotels">
+      <div class="row sr-result" *ngFor="let x of hotels">
+        <div class="col-3 imges">
+          <div class="main-img">
+            <img src="assets/imges/1.jpg" alt="hotel-img" class="img-fluid" />
+          </div>
+          <div class="sec-img  row px-3 ">
+
+            <div class="col-4"> <img src="assets/imges/2.jpg" alt="hotel-img" class="img-fluid" /> </div>
+            <div class="col-4"><img src="assets/imges/3.jpg" alt="hotel-img" class="img-fluid" /> </div>
+            <div class="col-4"><img src="assets/imges/2.jpg" alt="hotel-img" class="img-fluid" /> </div>
+          </div>
+        </div>
+        <div class="col-6 detils">
+          <div class="data mb-4 pb-4">
+            <h2>{{x.name}}</h2>
+            <h3><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                class="fas fa-star"></i> <i class="fas fa-star"></i></h3>
+            <h4> <i class="fas fa-map-marker-alt"></i> {{x.city}} </h4>
+          </div>
+          <div class="icon">
+            <i class="fas fa-parking"></i>
+            <i class="fas fa-utensils"></i>
+            <i class="fas fa-paw"></i>
+            <i class="fas fa-cheese"></i>
+            <i class="fas fa-utensils"></i>
+            <i class="fas fa-paw"></i>
+
+          </div>
+
+        </div>
+        <div class="col-3 price p-2">
+          <h2> <span>4.5 </span> Fabulous <i class="fas fa-share-alt ml-3"></i></h2>
+          <div class="text-center">
+            <h3>Total price for {{diffDays}} nights</h3>
+            <h4>{{diffDays*x.price}} AED</h4>
+            <button type="button" class="btn btn-primary my-2"> Available Rooms</button>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
